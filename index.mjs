@@ -14,20 +14,27 @@ while(true){
                                 7-Salir
                                 Opcion --> `)
 
-    if(opcion === "7") process.exit()
+    if(opcion === "7"){
+        console.log("Saliendo del programa, presione enter...")
+        await input("")
+        process.exit()
+    }
+    if(opcion < 1 || opcion > 6){
+        console.log("Opcion incorrecta, presione enter para regresar...")
+        await input("")
+    }
+    else{
+        const n1 = Number(await input("Ingrese el primer numero: "))
+        const n2 = Number(await input("Ingrese el segundo numero: "))
+        const calculo = new Calculadora(n1,n2)
 
-    const n1 = Number(await input("Ingrese el primer numero: "))
-    const n2 = Number(await input("Ingrese el segundo numero: "))
-    const calculo = new Calculadora(n1,n2)
-
-    switch(opcion){
-        case "1": calculo.sumar(); await input(""); break;
-        case "2": calculo.restar(); await input(""); break;
-        case "3": calculo.multiplicar(); await input(""); break;
-        case "4": calculo.dividir(); await input(""); break;
-        case "5": calculo.resto(); await input(""); break;
-        case "6": calculo.potencia(); await input(""); break;
-        default: console.log("Opcion incorrecta")
-                 await input("Presione enter para volver al menu...")
+        switch(opcion){
+            case "1": calculo.sumar(); await input(""); break;
+            case "2": calculo.restar(); await input(""); break;
+            case "3": calculo.multiplicar(); await input(""); break;
+            case "4": calculo.dividir(); await input(""); break;
+            case "5": calculo.resto(); await input(""); break;
+            case "6": calculo.potencia(); await input(""); break;
+        }
     }
 }
